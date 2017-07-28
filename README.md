@@ -1,29 +1,29 @@
 # ⚡️ Serverless Plugin for S3 Sync
 
-[![npm](https://img.shields.io/npm/v/serverless-s3-sync.svg)](https://www.npmjs.com/package/serverless-s3-sync)
-[![CircleCI](https://img.shields.io/circleci/project/github/sbstjn/serverless-s3-sync/master.svg)](https://circleci.com/gh/sbstjn/serverless-s3-sync)
-[![license](https://img.shields.io/github/license/sbstjn/serverless-s3-sync.svg)](https://github.com/sbstjn/serverless-s3-sync/blob/master/LICENSE.md)
-[![Coveralls](https://img.shields.io/coveralls/sbstjn/serverless-s3-sync.svg)](https://coveralls.io/github/sbstjn/serverless-s3-sync)
+[![npm](https://img.shields.io/npm/v/serverless-s3bucket-sync.svg)](https://www.npmjs.com/package/serverless-s3bucket-sync)
+[![CircleCI](https://img.shields.io/circleci/project/github/sbstjn/serverless-s3bucket-sync/master.svg)](https://circleci.com/gh/sbstjn/serverless-s3bucket-sync)
+[![license](https://img.shields.io/github/license/sbstjn/serverless-s3bucket-sync.svg)](https://github.com/sbstjn/serverless-s3bucket-sync/blob/master/LICENSE.md)
+[![Coveralls](https://img.shields.io/coveralls/sbstjn/serverless-s3bucket-sync.svg)](https://coveralls.io/github/sbstjn/serverless-s3bucket-sync)
 
 With this plugin for [serverless](https://serverless.com), you can sync local folders to S3 buckets after your service is deployed.
 
 ## Usage
 
-Add the [NPM package](https://www.npmjs.com/package/serverless-s3-sync) to your project:
+Add the [NPM package](https://www.npmjs.com/package/serverless-s3bucket-sync) to your project:
 
 ```bash
 # Via yarn
-$ yarn add serverless-s3-sync
+$ yarn add serverless-s3bucket-sync
 
 # Via npm
-$ npm install serverless-s3-sync
+$ npm install serverless-s3bucket-sync
 ```
 
 Add the plugin to your `serverless.yml`:
 
 ```yaml
 plugins:
-  - serverless-s3-sync
+  - serverless-s3bucket-sync
 ```
 
 ## Configuration

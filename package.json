@@ -1,5 +1,5 @@
 {
-  "name": "serverless-s3-sync",
+  "name": "serverless-s3bucket-sync",
   "description": "Serverless Plugin to sync local folders with an S3 bucket",
   "version": "0.0.0",
   "main": "src/plugin.js",
@@ -24,12 +24,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sbstjn/serverless-s3-sync.git"
+    "url": "https://github.com/sbstjn/serverless-s3bucket-sync.git"
   },
   "bugs": {
-    "url": "https://github.com/sbstjn/serverless-s3-sync/issues"
+    "url": "https://github.com/sbstjn/serverless-s3bucket-sync/issues"
   },
-  "homepage": "https://github.com/sbstjn/serverless-s3-sync",
+  "homepage": "https://github.com/sbstjn/serverless-s3bucket-sync",
   "dependencies": {
     "s3": "^4.4.0"
   },
