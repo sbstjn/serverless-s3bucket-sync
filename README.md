@@ -39,6 +39,10 @@ custom:
 
 That's it! With the next deployment, [serverless](https://serverless.com) will sync your local folder `relative/folder` with the S3 bucket named `bucket-name`. 
 
+## Sync
+
+You can use `sls sync` to synchornize all buckets without deploying your serverless stack.
+
 ## License
 
 Feel free to use the code, it's released using the [MIT license](LICENSE.md).

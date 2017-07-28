@@ -7,8 +7,14 @@ class Plugin {
     this.provider = serverless.getProvider('aws')
 
     this.hooks = {
-      'after:deploy:deploy': this.afterDeploy.bind(this)
+      'after:deploy:deploy': this.sync.bind(this),
+      'sync:buckets': this.sync.bind(this)
     }
+
+    this.commands = {
+      sync: { lifecycleEvents: [ 'buckets' ] }
+    };
+
   }
 
   options () {
@@ -47,7 +53,7 @@ class Plugin {
     })
   }
 
-  afterDeploy () {
+  sync () {
     return Promise.all(
       this.serverless.service.custom['s3-sync'].map(this.upload.bind(this))
     )
