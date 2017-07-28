@@ -4,15 +4,14 @@ const util = require('util')
 class Plugin {
   constructor (serverless) {
     this.serverless = serverless
-    this.provider = serverless.getProvider('aws')
+
+    this.commands = {
+      sync: { lifecycleEvents: [ 'buckets' ] }
+    }
 
     this.hooks = {
       'after:deploy:deploy': this.sync.bind(this),
       'sync:buckets': this.sync.bind(this)
-    }
-
-    this.commands = {
-      sync: { lifecycleEvents: [ 'buckets' ] }
     }
   }
 
