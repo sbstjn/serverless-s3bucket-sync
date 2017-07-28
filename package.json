@@ -1,0 +1,53 @@
+{
+  "name": "serverless-s3-sync",
+  "description": "Serverless Plugin to sync local folders with an S3 bucket",
+  "version": "0.0.0",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "jest test",
+    "test:cover": "jest test --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "standard | snazzy"
+  },
+  "keywords": [
+    "serverless",
+    "sls",
+    "plugin",
+    "s3",
+    "s3bucket",
+    "s3sync",
+    "sync",
+    "amazon",
+    "aws"
+  ],
+  "author": "Sebastian Müller <mail@sbstjn.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sbstjn/serverless-s3-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sbstjn/serverless-s3-sync/issues"
+  },
+  "homepage": "https://github.com/sbstjn/serverless-s3-sync",
+  "dependencies": {
+    "s3": "^4.4.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "dot-json": "^1.0.3",
+    "jest": "^20.0.4",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  },
+  "standard": {
+    "envs": [
+      "node",
+      "jest"
+    ],
+    "ignore": [
+      "node_modules/",
+      "coverage"
+    ]
+  }
+}
