@@ -13,8 +13,7 @@ class Plugin {
 
     this.commands = {
       sync: { lifecycleEvents: [ 'buckets' ] }
-    };
-
+    }
   }
 
   options () {
