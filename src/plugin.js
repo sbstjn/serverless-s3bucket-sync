@@ -23,7 +23,7 @@ class Plugin {
       multipartUploadThreshold: 20971520,
       multipartUploadSize: 15728640,
       s3Options: {
-        region: this.serverless.service.provider.region
+        region: this.serverless.getProvider('aws').getStage()
       }
     }
   }
