@@ -1,11 +1,6 @@
 import * as s3 from 's3'
 import * as util from 'util'
 
-declare interface IConfig {
-  bucket: string
-  folder: string
-}
-
 class S3Plugin {
   private commands: {}
   private hooks: {}
@@ -38,7 +33,7 @@ class S3Plugin {
     return s3.createClient(this.options())
   }
 
-  private upload (config: IConfig) {
+  private upload (config: BucketConfig) {
     return new Promise((resolve) => {
       this.serverless.cli.log(util.format('Syncing folder "%s" to S3 bucket "%s"', config.folder, config.bucket))
 
