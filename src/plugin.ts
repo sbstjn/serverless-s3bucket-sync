@@ -10,7 +10,7 @@ class S3Plugin {
   private commands: {}
   private hooks: {}
 
-  constructor (private serverless: Serverless.Plugin) {
+  constructor (private serverless: Serverless) {
     this.commands = {
       sync: { lifecycleEvents: [ 'buckets' ] }
     }

@@ -1,19 +1,17 @@
-declare namespace Serverless {
-  interface Plugin {
-    cli: {
-      log(message: string): null
-    }
+declare interface Serverless {
+  cli: {
+    log(message: string): null
+  }
 
-    config: {
-      servicePath: string
-    }
+  config: {
+    servicePath: string
+  }
 
-    service: {
-      custom: {}
-    }
+  service: {
+    custom: {}
+  }
 
-    getProvider(name: string): {
-      getRegion: () => string
-    }
+  getProvider(name: string): {
+    getRegion: () => string
   }
 }
