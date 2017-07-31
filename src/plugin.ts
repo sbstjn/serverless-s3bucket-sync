@@ -1,10 +1,34 @@
-const s3 = require('s3')
-const util = require('util')
+import * as s3 from 's3'
+import * as util from 'util'
 
-class Plugin {
-  constructor (serverless) {
-    this.serverless = serverless
+interface IServerless {
+  cli: {
+    log(message: string): null
+  }
 
+  config: {
+    servicePath: string
+  }
+
+  service: {
+    custom: {}
+  }
+
+  getProvider(name: string): {
+    getRegion: () => string
+  }
+}
+
+interface IConfig {
+  bucket: string
+  folder: string
+}
+
+class S3Plugin {
+  private commands: {}
+  private hooks: {}
+
+  constructor (private serverless: IServerless) {
     this.commands = {
       sync: { lifecycleEvents: [ 'buckets' ] }
     }
@@ -15,31 +39,31 @@ class Plugin {
     }
   }
 
-  options () {
+  private options () {
     return {
       maxAsyncS3: 20,
-      s3RetryCount: 3,
-      s3RetryDelay: 1000,
-      multipartUploadThreshold: 20971520,
       multipartUploadSize: 15728640,
+      multipartUploadThreshold: 20971520,
       s3Options: {
         region: this.serverless.getProvider('aws').getRegion()
-      }
+      },
+      s3RetryCount: 3,
+      s3RetryDelay: 1000
     }
   }
 
-  client () {
+  private client () {
     return s3.createClient(this.options())
   }
 
-  upload (config) {
-    return new Promise(resolve => {
+  private upload (config: IConfig) {
+    return new Promise((resolve) => {
       this.serverless.cli.log(util.format('Syncing folder "%s" to S3 bucket "%s"', config.folder, config.bucket))
 
       const uploader = this.client().uploadDir(
         {
-          localDir: this.serverless.config.servicePath + '/' + config.folder,
           deleteRemoved: true,
+          localDir: this.serverless.config.servicePath + '/' + config.folder,
           s3Params: {
             Bucket: config.bucket
           }
@@ -51,11 +75,11 @@ class Plugin {
     })
   }
 
-  sync () {
+  private sync () {
     return Promise.all(
       this.serverless.service.custom['s3-sync'].map(this.upload.bind(this))
     )
   }
 }
 
-module.exports = Plugin
+module.exports = S3Plugin

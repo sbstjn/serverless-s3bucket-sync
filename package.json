@@ -2,12 +2,13 @@
   "name": "serverless-s3bucket-sync",
   "description": "Serverless Plugin to sync local folders with an S3 bucket",
   "version": "0.0.0",
-  "main": "src/plugin.js",
+  "main": "dist/plugin.js",
   "scripts": {
-    "test": "jest test",
-    "test:cover": "jest test --coverage",
+    "test": "jest",
+    "test:cover": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "standard | snazzy"
+    "lint": "tslint {src,test}/**/*.ts",
+    "build": "tsc"
   },
   "keywords": [
     "serverless",
@@ -34,20 +35,28 @@
     "s3": "^4.4.0"
   },
   "devDependencies": {
+    "@types/jest": "^20.0.5",
+    "@types/node": "^8.0.17",
+    "ts-jest": "^20.0.7",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2",
     "coveralls": "^2.13.1",
     "dot-json": "^1.0.3",
-    "jest": "^20.0.4",
-    "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "jest": "^20.0.4"
   },
-  "standard": {
-    "envs": [
-      "node",
-      "jest"
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
     ],
-    "ignore": [
-      "node_modules/",
-      "coverage"
-    ]
+    "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs"
+      }
+    }
   }
 }

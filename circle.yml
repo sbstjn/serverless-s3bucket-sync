@@ -16,6 +16,7 @@ deployment:
   release:
     tag: /v[0-9]+(\.[0-9]+)*/
     commands:
+      - yarn build
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/serverless-s3bucket-sync/.npmrc
       - $(yarn bin)/dot-json package.json version ${CIRCLE_TAG:1}
       - npm publish
