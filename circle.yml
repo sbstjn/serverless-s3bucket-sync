@@ -11,6 +11,8 @@ test:
     - yarn lint
   override:
     - yarn test
+  post:
+    - yarn build
 
 deployment:
   release:
