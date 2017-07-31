@@ -1,25 +1,7 @@
 import * as s3 from 's3'
 import * as util from 'util'
 
-interface IServerless {
-  cli: {
-    log(message: string): null
-  }
-
-  config: {
-    servicePath: string
-  }
-
-  service: {
-    custom: {}
-  }
-
-  getProvider(name: string): {
-    getRegion: () => string
-  }
-}
-
-interface IConfig {
+declare interface IConfig {
   bucket: string
   folder: string
 }
@@ -28,7 +10,7 @@ class S3Plugin {
   private commands: {}
   private hooks: {}
 
-  constructor (private serverless: IServerless) {
+  constructor (private serverless: Serverless.Plugin) {
     this.commands = {
       sync: { lifecycleEvents: [ 'buckets' ] }
     }
