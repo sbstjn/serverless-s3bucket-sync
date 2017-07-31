@@ -1,7 +1,7 @@
 import * as s3 from 's3'
 import * as util from 'util'
 
-class S3Plugin {
+class S3BucketPlugin {
   private commands: {}
   private hooks: {}
 
@@ -59,4 +59,4 @@ class S3Plugin {
   }
 }
 
-module.exports = S3Plugin
+module.exports = S3BucketPlugin
