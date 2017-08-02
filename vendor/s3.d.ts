@@ -19,9 +19,7 @@ declare module 's3' {
       }
     }
 
-    interface Upload {
-      on(event: string, handler: () => any): null
-    }
+    interface Upload extends NodeJS.EventEmitter  { }
 
     interface Client {
       uploadDir(config: s3.UploadConfig): s3.Upload
