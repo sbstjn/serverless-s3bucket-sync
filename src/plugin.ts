@@ -2,8 +2,8 @@ import * as s3 from 's3'
 import * as util from 'util'
 
 class S3BucketPlugin {
-  private commands: {}
-  private hooks: {}
+  public commands: {}
+  public hooks: {}
 
   constructor (private serverless: Serverless) {
     this.commands = {
