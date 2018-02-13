@@ -13,6 +13,7 @@ declare namespace Serverless {
       getRegion: () => string
       getServerlessDeploymentBucketName: () => string
       getStage: () => string
+      profile: {}
     }
   }
 }

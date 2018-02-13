@@ -18,10 +18,11 @@ class S3BucketPlugin {
 
   private getS3Credentials() {
     let credentials = null
+    const provider = this.serverless.getProvider('aws')
 
-    if (this.serverless.service.provider.profile) {
+    if (provider && provider.profile) {
       credentials = new s3.AWS.SharedIniFileCredentials({
-        profile: this.serverless.service.provider.profile
+        profile: provider.profile
       })
     }
 
