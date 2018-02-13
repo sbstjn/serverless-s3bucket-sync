@@ -15,26 +15,27 @@ class S3BucketPlugin {
       'sync:buckets': this.sync.bind(this)
     }
   }
-  
+
   private getS3Credentials() {
-    let credentials = null;
+    let credentials = null
+
     if (this.serverless.service.provider.profile) {
       credentials = new s3.AWS.SharedIniFileCredentials({
         profile: this.serverless.service.provider.profile
-      });
+      })
     }
 
-    return credentials;
+    return credentials
   }
-  
+
   private options () {
     return {
       maxAsyncS3: 20,
       multipartUploadSize: 15728640,
       multipartUploadThreshold: 20971520,
       s3Options: {
-        region: this.serverless.getProvider('aws').getRegion(),
-        credentials: this.getS3Credentials()
+        credentials: this.getS3Credentials(),
+        region: this.serverless.getProvider('aws').getRegion()
       },
       s3RetryCount: 3,
       s3RetryDelay: 1000
